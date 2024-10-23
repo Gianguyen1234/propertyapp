@@ -259,3 +259,8 @@ C:\Users\Admin\Documents\Aspnet projects\propertyapp\bin\Debug\net8.0\runtimes\w
 C:\Users\Admin\Documents\Aspnet projects\propertyapp\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Admin\Documents\Aspnet projects\propertyapp\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 C:\Users\Admin\Documents\Aspnet projects\propertyapp\obj\Debug\net8.0\propertyapp.sourcelink.json
+C:\Users\Admin\Documents\Aspnet projects\propertyapp\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Admin\Documents\Aspnet projects\propertyapp\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Admin\Documents\Aspnet projects\propertyapp\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Admin\Documents\Aspnet projects\propertyapp\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Admin\Documents\Aspnet projects\propertyapp\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll

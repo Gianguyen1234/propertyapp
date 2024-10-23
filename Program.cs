@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using propertyapp.Data;
 using propertyapp.Models;
@@ -7,7 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add the DbContext configuration here
 builder.Services.AddDbContext<PropertyContext>(options =>
     options.UseSqlite("Data Source=properties.db"));
-
+// For Identity (new context)
+builder.Services.AddDbContext<IdentityContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<IdentityContext>()
+    .AddDefaultTokenProviders();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -28,6 +34,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
