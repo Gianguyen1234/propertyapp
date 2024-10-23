@@ -1,0 +1,34 @@
+@model propertyapp.Models.Property
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address" class="control-label"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price" class="control-label"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Bedrooms" class="control-label"></label>
+        <input asp-for="Bedrooms" class="form-control" />
+        <span asp-validation-for="Bedrooms" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Bathrooms" class="control-label"></label>
+        <input asp-for="Bathrooms" class="form-control" />
+        <span asp-validation-for="Bathrooms" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>

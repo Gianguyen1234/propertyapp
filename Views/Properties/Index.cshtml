@@ -1,0 +1,28 @@
+@model IEnumerable<propertyapp.Models.Property>
+
+@{
+    ViewData["Title"] = "Property Listings";
+}
+
+<div class="container mt-4">
+    <h1>@ViewData["Title"]</h1>
+
+    <div class="row">
+        @foreach (var property in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@property.Title</h5>
+                        <p class="card-text"><strong>Address:</strong> @property.Address</p>
+                        <p class="card-text"><strong>Price:</strong> @property.Price.ToString("C")</p>
+                        <p class="card-text"><strong>Bedrooms:</strong> @property.Bedrooms</p>
+                        <p class="card-text"><strong>Bathrooms:</strong> @property.Bathrooms</p>
+                        <a asp-controller="Properties" asp-action="Edit" asp-route-id="@property.Id" class="btn btn-warning">Edit</a>
+                        <a asp-controller="Properties" asp-action="Delete" asp-route-id="@property.Id" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

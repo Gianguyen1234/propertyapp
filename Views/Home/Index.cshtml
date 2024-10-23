@@ -1,0 +1,41 @@
+﻿@model IEnumerable<propertyapp.Models.Property> // Update this line
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center mb-4">
+    <h1 class="display-4">Welcome to PropertyApp</h1>
+    <p>Find your dream property today!</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var property in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="~/images/default-property.jpg" class="card-img-top" alt="@property.Title" />
+                        <div class="card-body">
+                            <h5 class="card-title">@property.Title</h5>
+                            <p class="card-text">Address: @property.Address</p>
+                            <p class="card-text">Bedrooms: @property.Bedrooms, Bathrooms: @property.Bathrooms</p>
+                            <p class="card-text"><strong>Price:</strong> @property.Price.ToString("C")</p>
+                            <a href="@Url.Action("Details", "Properties", new { id = property.Id })" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No properties available at the moment.</p>
+        }
+    </div>
+</div>
+
+<div class="text-center mt-5">
+    <a href="@Url.Action("Index", "Properties")" class="btn btn-secondary btn-lg">See All Properties</a>
+</div>
