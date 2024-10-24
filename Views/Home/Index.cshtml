@@ -1,4 +1,4 @@
-﻿@model IEnumerable<propertyapp.Models.Property> // Update this line
+﻿@model IEnumerable<propertyapp.Models.Property>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -36,6 +36,25 @@
     </div>
 </div>
 
-<div class="text-center mt-5">
-    <a href="@Url.Action("Index", "Properties")" class="btn btn-secondary btn-lg">See All Properties</a>
-</div>
+<!-- Pagination -->
+@if (ViewBag.TotalPages > 1)
+{
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+                <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage - 1 })">Previous</a>
+            </li>
+
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                </li>
+            }
+
+            <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+                <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage + 1 })">Next</a>
+            </li>
+        </ul>
+    </nav>
+}

@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; 
-using propertyapp.Data; 
+using Microsoft.EntityFrameworkCore;
+using propertyapp.Data;
 using propertyapp.Models;
 
 namespace propertyapp.Controllers
@@ -17,11 +17,21 @@ namespace propertyapp.Controllers
             _context = context; // Initialize the context
         }
 
-        public async Task<IActionResult> Index() // Make this action async
+        public async Task<IActionResult> Index(int page = 1, int pageSize = 6)
         {
-            var properties = await _context.Properties.ToListAsync(); // Fetch properties from the database
-            return View(properties); // Pass properties to the view
+            var totalItems = await _context.Properties.CountAsync(); // Get the total number of properties
+            var properties = await _context.Properties
+                                            .OrderBy(p => p.Id) // Optional: Order properties by Id or another field
+                                            .Skip((page - 1) * pageSize) // Skip the previous pages
+                                            .Take(pageSize) // Take only the pageSize number of items
+                                            .ToListAsync(); // Fetch properties from the database
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+
+            return View(properties); // Pass paginated properties to the view
         }
+
 
         public IActionResult Privacy()
         {
