@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; // Import this for EF Core functionality
-using propertyapp.Data; // Ensure you have the correct namespace for your PropertyContext
+using Microsoft.EntityFrameworkCore; 
+using propertyapp.Data; 
 using propertyapp.Models;
 
 namespace propertyapp.Controllers
